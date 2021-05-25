@@ -1,0 +1,10 @@
+include: package:lint/analysis_options.yaml
+
+linter:
+    rules:
+        # The new tabs vs. spaces. Choose wisely
+        prefer_single_quotes: true
+        prefer_double_quotes: false
+
+        # Blindly follow the Flutter code style, which prefers types everywhere
+        always_specify_types: true
