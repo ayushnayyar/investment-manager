@@ -43,26 +43,31 @@ class MoneyManager extends StatefulWidget {
 class _MoneyManagerState extends State<MoneyManager> {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      initialBinding: AuthBinding(),
-      title: 'Money Manager',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return GestureDetector(
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: GetMaterialApp(
+        initialBinding: AuthBinding(),
+        title: 'Money Manager',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: Root(),
+        getPages: <GetPage<String>>[
+          GetPage<String>(name: '/', page: () => Root()),
+          GetPage<String>(name: '/bottom-nav-home', page: () => BottomNavHome()),
+          GetPage<String>(name: '/home-page', page: () => Home()),
+          GetPage<String>(name: '/add-investment', page: () => AddInvestment()),
+          GetPage<String>(name: '/profile', page: () => Profile()),
+          GetPage<String>(name: '/add-investment/stocks', page: () => Stocks()),
+          GetPage<String>(name: '/add-investment/mutual-funds', page: () => MutualFunds()),
+          GetPage<String>(name: '/add-investment/savings-account', page: () => SavingsAccount()),
+          GetPage<String>(name: '/add-investment/bonds', page: () => Bonds()),
+        ],
       ),
-      home: Root(),
-      getPages: <GetPage<String>>[
-        GetPage<String>(name: '/', page: () => Root()),
-        GetPage<String>(name: '/bottom-nav-home', page: () => BottomNavHome()),
-        GetPage<String>(name: '/home-page', page: () => Home()),
-        GetPage<String>(name: '/add-investment', page: () => AddInvestment()),
-        GetPage<String>(name: '/profile', page: () => Profile()),
-        GetPage<String>(name: '/add-investment/stocks', page: () => Stocks()),
-        GetPage<String>(name: '/add-investment/mutual-funds', page: () => MutualFunds()),
-        GetPage<String>(name: '/add-investment/savings-account', page: () => SavingsAccount()),
-        GetPage<String>(name: '/add-investment/bonds', page: () => Bonds()),
-      ],
     );
   }
 

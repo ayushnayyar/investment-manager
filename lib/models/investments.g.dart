@@ -12,7 +12,9 @@ class InvestmentsAdapter extends TypeAdapter<Investments> {
 
   @override
   Investments read(BinaryReader reader) {
+    // ignore: always_specify_types
     final numOfFields = reader.readByte();
+    // ignore: always_specify_types
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
@@ -52,7 +54,5 @@ class InvestmentsAdapter extends TypeAdapter<Investments> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is InvestmentsAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is InvestmentsAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
